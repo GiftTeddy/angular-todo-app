@@ -1,1 +1,22 @@
-<p>todo-list works!</p>
+<div>
+    <h2>Todo List</h2>
+    <form (ngSubmit)="addTask()">
+      <input [(ngModel)]="newTask" type="text" placeholder="New Task" name="newTask" required />
+      <input [(ngModel)]="dueDate" type="date" name="dueDate" required />
+      <select [(ngModel)]="priority" name="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+  
+    <ul>
+      <li *ngFor="let todo of todos" [ngClass]="{ 'overdue': isOverdue(todo) }">
+        <input type="checkbox" [(ngModel)]="todo.completed" (change)="toggleComplete(todo)" />
+        {{ todo.title }} ({{ todo.priority }}) - {{ todo.dueDate | date }}
+        <button (click)="removeTask(todo.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

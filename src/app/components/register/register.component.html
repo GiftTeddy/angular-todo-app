@@ -1,1 +1,12 @@
-<p>register works!</p>
+<div>
+    <h2>Register</h2>
+    <form (ngSubmit)="register()">
+      <input [(ngModel)]="name" type="text" placeholder="Name" name="name" required />
+      <input [(ngModel)]="email" type="email" placeholder="Email" name="email" required />
+      <input [(ngModel)]="password" type="password" placeholder="Password" name="password" required />
+      <button type="submit">Register</button>
+      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+  </div>
+  
